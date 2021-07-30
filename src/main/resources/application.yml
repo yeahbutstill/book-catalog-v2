@@ -9,7 +9,10 @@ server:
   
 ---
 spring: 
-  profiles: development
+  config:
+    activate:
+      on-profile:
+      - development
   
 server:
   port: 8003
@@ -20,7 +23,10 @@ app:
   
 ---
 spring: 
-  profiles: test
+  config:
+    activate:
+      on-profile:
+      - test
   
 server:
   port: 8083  
@@ -29,7 +35,10 @@ server:
   
 ---
 spring: 
-  profiles: production  
+  config:
+    activate:
+      on-profile:
+      - production  
   
 server:
   port: 80  
