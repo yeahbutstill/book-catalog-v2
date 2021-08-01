@@ -9,9 +9,7 @@ server:
   
 ---
 spring: 
-  config:
-    activate:
-      on-profile:
+  profiles:
       - development
   
 server:
@@ -23,9 +21,7 @@ app:
   
 ---
 spring: 
-  config:
-    activate:
-      on-profile:
+  profiles:
       - test
   
 server:
@@ -35,9 +31,7 @@ server:
   
 ---
 spring: 
-  config:
-    activate:
-      on-profile:
+  profiles:
       - production  
   
 server:
