@@ -1,3 +1,5 @@
+logging:  level:    '[com.subrutin.catalog]': TRACE
+
 app:
   currency: IDR
   timezone: Asia/Jakarta
@@ -8,9 +10,7 @@ server:
   port: 8090
   
 ---
-spring: 
-  profiles:
-      - development
+spring:  config:    activate:      on-profile:      - development
   
 server:
   port: 8003
@@ -20,9 +20,7 @@ app:
   
   
 ---
-spring: 
-  profiles:
-      - test
+spring:  config:    activate:      on-profile:      - test
   
 server:
   port: 8083  
@@ -30,9 +28,7 @@ server:
   
   
 ---
-spring: 
-  profiles:
-      - production  
+spring:  config:    activate:      on-profile:      - production
   
 server:
   port: 80  
