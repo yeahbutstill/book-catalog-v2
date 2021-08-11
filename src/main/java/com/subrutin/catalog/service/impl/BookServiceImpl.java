@@ -14,12 +14,12 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-
 @Slf4j
 @AllArgsConstructor
 @Service("bookService")
 public class BookServiceImpl implements BookService{
 	
+
 	private final BookRepository bookRepository;
 
 
