@@ -1,5 +1,8 @@
 package com.subrutin.catalog.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,20 @@ public class BookServiceImpl implements BookService{
 		dto.setBookTitle(book.getTitle());
 		dto.setBookDescription(book.getDescription());
 		return dto;
+	}
+
+
+	@Override
+	public List<BookDetailDTO> findBookListDetail() {
+		List<Book> books = bookRepository.findAll();
+		return books.stream().map((b)->{
+			BookDetailDTO dto = new BookDetailDTO();
+			dto.setAuthorName(b.getAuthor().getName());
+			dto.setBookDescription(b.getDescription());
+			dto.setBookId(b.getId());
+			dto.setBookTitle(b.getTitle());
+			return dto;
+		}).collect(Collectors.toList());
 	}
 
 //	public BookRepository getBookRepository() {
