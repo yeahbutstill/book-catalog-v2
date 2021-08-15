@@ -28,4 +28,14 @@ public class BookRepositoryImpl implements BookRepository{
 		return bookList;
 	}
 
+
+	@Override
+	public void save(Book book) {
+		//size = 2, -> 1,2
+		int size = bookMap.size();
+		book.setId((long) size+1);
+		bookMap.put(book.getId(), book);
+		
+	}
+
 }
