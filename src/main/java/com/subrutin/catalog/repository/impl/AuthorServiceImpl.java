@@ -1,6 +1,8 @@
 package com.subrutin.catalog.repository.impl;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,18 @@ public class AuthorServiceImpl implements AuthorService {
 		author.setBirthDate(LocalDate.ofEpochDay(dto.getBirthDate()));
 		
 		authorRepository.save(author);
+	}
+
+	@Override
+	public void createNewAuthors(List<AuthorCreateRequestDTO> dtos) {
+		List<Author> authors= dtos.stream().map((dto)->{
+			Author author = new Author();
+			author.setName(dto.getAuthorName());
+			author.setBirthDate(LocalDate.ofEpochDay(dto.getBirthDate()));
+			return author;
+		}).collect(Collectors.toList());
+		authorRepository.saveAll(authors);
+
 	}
 
 }

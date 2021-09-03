@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class Author {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@SequenceGenerator(name = "author_id_gen", sequenceName = "author_id_seq", allocationSize = 50)
 	private Long id;
 	
 	@Column(name = "author_name", nullable = false, columnDefinition = "varchar(300)")

@@ -1,6 +1,7 @@
 package com.subrutin.catalog.web;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -30,8 +31,8 @@ public class AuthorResource {
 	}
 	
 	@PostMapping("/author")
-	public ResponseEntity<Void> createNewAuthor(@RequestBody @Valid AuthorCreateRequestDTO dto){
-		authorService.createNewAuthor(dto);
+	public ResponseEntity<Void> createNewAuthor(@RequestBody @Valid List<AuthorCreateRequestDTO> dto){
+		authorService.createNewAuthors(dto);
 		return ResponseEntity.created(URI.create("/author")).build();
 	}
 
