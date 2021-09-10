@@ -1,5 +1,5 @@
 logging:  level:    '[com.subrutin.catalog]': TRACE
-spring:  datasource:    hikari:      connection-timeout: 600000      idle-timeout: 600000      max-lifetime: 1800000      maximum-pool-size: 10    url: jdbc:postgresql://127.0.0.1/book_catalog?reWriteBatchedInserts=true    username: subrutin    password: subrutin  jpa:    database: POSTGRESQL    hibernate:      ddl-auto: update    properties:      hibernate:        dialect: org.hibernate.dialect.PostgreSQLDialect      jdbc.batch_size: 100      batch_versioned_data: true      order_inserts: true    show-sql: true      
+spring:  datasource:    hikari:      connection-timeout: 600000      idle-timeout: 600000      max-lifetime: 1800000      maximum-pool-size: 10    url: jdbc:postgresql://127.0.0.1/book_catalog?reWriteBatchedInserts=true    username: subrutin    password: subrutin  jpa:    database: POSTGRESQL    hibernate:      ddl-auto: update    properties:      hibernate:        dialect: org.hibernate.dialect.PostgreSQLDialect        jdbc:          batch_size: 100        order_inserts: true    show-sql: true      
 app:
   currency: IDR
   timezone: Asia/Jakarta
