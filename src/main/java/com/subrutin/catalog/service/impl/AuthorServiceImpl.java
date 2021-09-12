@@ -26,7 +26,7 @@ public class AuthorServiceImpl implements AuthorService {
 	public AuthorResponseDTO findAuthorById(Long id) {
 		// TODO Auto-generated method stub
 		// 1. fetch data from databse
-		Author author = authorRepository.findByIdAndDeletedFalse(id).orElseThrow(() -> new BadRequestException("invalid.authorId"));
+		Author author = authorRepository.findById(id).orElseThrow(() -> new BadRequestException("invalid.authorId"));
 		// 2. author -> authorResponseDTO
 		AuthorResponseDTO dto = new AuthorResponseDTO();
 		dto.setAuthorName(author.getName());
@@ -49,7 +49,7 @@ public class AuthorServiceImpl implements AuthorService {
 
 	@Override
 	public void updateAuthor(Long authorId, AuthorUpdateRequestDTO dto) {
-		Author author = authorRepository.findByIdAndDeletedFalse(authorId)
+		Author author = authorRepository.findById(authorId)
 				.orElseThrow(() -> new BadRequestException("invalid.authorId"));
 		author.setName(dto.getAuthorName() == null ? author.getName() : dto.getAuthorName());
 		author.setBirthDate(
@@ -67,16 +67,16 @@ public class AuthorServiceImpl implements AuthorService {
 		// 2 delete
 		// or
 		// 1 delete (harddelete)
-//		authorRepository.deleteById(authorId);
+		authorRepository.deleteById(authorId);
 
 		// softdelete
 		// 1. select data deleted=false
-		Author author = authorRepository.findByIdAndDeletedFalse(authorId)
-				.orElseThrow(() -> new BadRequestException("invalid.authorId"));
-
-		// 2. update deleted=true
-		author.setDeleted(Boolean.TRUE);
-		authorRepository.save(author);
+//		Author author = authorRepository.findByIdAndDeletedFalse(authorId)
+//				.orElseThrow(() -> new BadRequestException("invalid.authorId"));
+//
+//		// 2. update deleted=true
+//		author.setDeleted(Boolean.TRUE);
+//		authorRepository.save(author);
 	}
 
 }
