@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -30,6 +32,10 @@ public class Book implements Serializable {
 	
 	@Column(name = "description", nullable = true)
 	private String description;
+	
+	@ManyToOne
+	@JoinColumn(name = "publisher_id", nullable = false)
+	private Publisher publisher;
 	
 
 	
