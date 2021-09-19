@@ -1,5 +1,6 @@
 package com.subrutin.catalog.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -25,16 +27,22 @@ import lombok.NoArgsConstructor;
 //@DynamicUpdate
 @SQLDelete(sql = "UPDATE author SET deleted = true WHERE id = ?")
 @Where(clause = "deleted=false")
-public class Author {
+public class Author implements Serializable{
 	
 	//postgre-> bigserial
 	//mysql->autoincrement
 	//strategy -> identity -> cons: batch insert disabled
 	//batch insert -> stored producured
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4415917570527208430L;
+
 	//strategy sequence -> pros: enable batch insert
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_generator")
+	@SequenceGenerator(name = "author_generator", sequenceName = "author_id_seq")
 	private Long id;
 	
 	@Column(name = "author_name", nullable = false, columnDefinition = "varchar(300)")
