@@ -48,6 +48,14 @@ public class Book implements Serializable {
 	})
 	private List<Author> authors;
 	
+	@ManyToMany
+	@JoinTable(name = "book_category", joinColumns = {
+			@JoinColumn(name="book_id", referencedColumnName = "id")},
+	inverseJoinColumns = {
+			@JoinColumn(name="category_code", referencedColumnName = "code")
+	})
+	private List<Category> categories;
+	
 
 	
 	
