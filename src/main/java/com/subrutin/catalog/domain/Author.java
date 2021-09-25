@@ -25,17 +25,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "author", indexes = {
-		@Index(name="uk_secure_id", columnList = "secure_id")
-})
+@Table(name = "author")
 //@DynamicUpdate
 @SQLDelete(sql = "UPDATE author SET deleted = true WHERE id = ?")
 @Where(clause = "deleted=false")
-public class Author implements Serializable{
+public class Author extends AbstractBaseEntity{
 	
 	//postgre-> bigserial
 	//mysql->autoincrement
-	//strategy -> identity -> cons: batch insert disabled
+	//strategy -> i dentity -> cons: batch insert disabled
 	//batch insert -> stored producured
 	
 	/**
@@ -49,17 +47,12 @@ public class Author implements Serializable{
 	@SequenceGenerator(name = "author_generator", sequenceName = "author_id_seq")
 	private Long id;
 	
-	@Column(name = "secure_id", nullable = false, unique = true)
-	private String secureId=UUID.randomUUID().toString();
 	
 	@Column(name = "author_name", nullable = false, columnDefinition = "varchar(300)")
 	private String name;
 	
 	@Column(name = "birth_date", nullable = false)
 	private LocalDate birthDate;
-	
-	@Column(name="deleted", columnDefinition = "boolean default false")
-	private Boolean deleted;
 	
 	
 	

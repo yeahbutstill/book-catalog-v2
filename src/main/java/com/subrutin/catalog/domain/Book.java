@@ -19,7 +19,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "book")
-public class Book implements Serializable {
+public class Book extends AbstractBaseEntity {
 	
 	/**
 	 * 
