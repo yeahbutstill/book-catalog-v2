@@ -9,10 +9,10 @@ import com.subrutin.catalog.dto.ResultPageDTO;
 
 public class PaginationUtil {
 
-	public static <T> ResultPageDTO<T> createResultPageDTO(List<T> dtos, Long totalElements, int i) {
+	public static  <T> ResultPageDTO<T> createResultPageDTO(List<T> dtos, Long totalElements, Integer pages) {
         ResultPageDTO<T> result = new ResultPageDTO<T>();
         result.setElements(totalElements);
-        result.setPages(totalElements);
+        result.setPages(pages);
         result.setResult(dtos);
 		return result;
 

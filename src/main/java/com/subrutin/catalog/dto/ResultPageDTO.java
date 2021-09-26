@@ -9,7 +9,7 @@ public class ResultPageDTO<T> {
 
 	private Collection<T> result;
 	
-	private Long pages;
+	private Integer pages;
 	
 	private Long elements;
 }
