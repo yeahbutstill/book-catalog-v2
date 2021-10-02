@@ -8,7 +8,7 @@ import com.subrutin.catalog.dto.ResultPageResponseDTO;
 
 public class PaginationUtil {
 	
-	public static <T> ResultPageResponseDTO<T> createResultPageDTO(List<T> dtos, Long totalElements, Long pages){
+	public static <T> ResultPageResponseDTO<T> createResultPageDTO(List<T> dtos, Long totalElements, Integer pages){
 		ResultPageResponseDTO<T> result = new ResultPageResponseDTO<T>();
 		result.setPages(pages);
 		result.setElements(totalElements);
