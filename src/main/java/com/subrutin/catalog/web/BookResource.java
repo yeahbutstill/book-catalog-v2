@@ -1,4 +1,4 @@
-package com.subrutin.catalog.web;
+ package com.subrutin.catalog.web;
 
 import java.net.URI;
 import java.util.List;
