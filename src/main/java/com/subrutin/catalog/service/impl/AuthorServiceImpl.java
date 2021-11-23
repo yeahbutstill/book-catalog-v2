@@ -2,10 +2,14 @@ package com.subrutin.catalog.service.impl;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.subrutin.catalog.domain.Address;
 import com.subrutin.catalog.domain.Author;
 import com.subrutin.catalog.dto.AuthorCreateRequestDTO;
 import com.subrutin.catalog.dto.AuthorResponseDTO;
@@ -36,6 +40,7 @@ public class AuthorServiceImpl implements AuthorService {
 		return dto;
 	}
 
+	@Transactional
 	@Override
 	public void createNewAuthor(List<AuthorCreateRequestDTO> dtos) {
 
@@ -43,6 +48,16 @@ public class AuthorServiceImpl implements AuthorService {
 			Author author = new Author();
 			author.setName(dto.getAuthorName());
 			author.setBirthDate(LocalDate.ofEpochDay(dto.getBirthDate()));
+			List<Address> addresses = dto.getAddresses().stream().map(a->{
+				Address address = new Address();
+				address.setAuthor(author);
+				address.setCityName(a.getCityName());
+				address.setDisctrictName(a.getDistrictName());
+				address.setStreetName(a.getStreetName());
+				address.setZipCode(a.getZipCode());
+				return address;
+			}).collect(Collectors.toList());
+			author.setAddresses(addresses);
 			return author;
 		}).collect(Collectors.toList());
 
