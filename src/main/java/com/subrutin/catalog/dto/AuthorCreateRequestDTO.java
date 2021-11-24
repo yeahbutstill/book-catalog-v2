@@ -1,5 +1,7 @@
 package com.subrutin.catalog.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -17,4 +19,6 @@ public class AuthorCreateRequestDTO {
 	
 	@NotNull
 	private Long birthDate;
+	
+	private List<AddressCreateRequestDTO> addresses;
 }
