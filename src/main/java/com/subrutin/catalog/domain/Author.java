@@ -30,8 +30,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "author")
 //@DynamicUpdate
-@SQLDelete(sql = "UPDATE author SET deleted = true WHERE id = ?")
-@Where(clause = "deleted=false")
+//@SQLDelete(sql = "UPDATE author SET deleted = true WHERE id = ?")
+//@Where(clause = "deleted=false")
 public class Author extends AbstractBaseEntity{
 	
 	//postgre-> bigserial
