@@ -58,7 +58,7 @@ public class LoggingAspect {
 		log.info("this is log from aspect after throwing method executed");
 	}
 	
-	@Around("restAPI()")
+//	@Around("restAPI()")
 	public Object processingTimeLogging(ProceedingJoinPoint jointPoint) throws Throwable {
 		StopWatch stopWatch = new StopWatch();
 

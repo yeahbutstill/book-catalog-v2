@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.subrutin.catalog.dto.BookCreateRequestDTO;
 import com.subrutin.catalog.dto.BookDetailResponseDTO;
+import com.subrutin.catalog.dto.BookListResponseDTO;
 import com.subrutin.catalog.dto.BookUpdateRequestDTO;
+import com.subrutin.catalog.dto.ResultPageResponseDTO;
 import com.subrutin.catalog.service.BookService;
 
 import lombok.AllArgsConstructor;
@@ -43,6 +46,20 @@ public class BookResource {
 
 	}
 	
+	@GetMapping("/v1/book")
+	public ResponseEntity<ResultPageResponseDTO<BookListResponseDTO>> findBook(
+			@RequestParam(name = "page", defaultValue = "0", required = true) Integer page,
+			@RequestParam(name = "limit", defaultValue = "10", required = true) Integer limit,
+			@RequestParam(name = "sortBy", defaultValue = "title", required = true) String sortBy, 
+			@RequestParam(name = "direction",defaultValue = "asc",  required = true) String direction, 
+			@RequestParam(name = "publisherName", defaultValue = "",  required = false) String publisherName,
+			@RequestParam(name = "authorName", defaultValue = "",  required = false) String authorName,
+			@RequestParam(name = "bookTitle", defaultValue = "",  required = false) String bookTitle) {
+		
+		return ResponseEntity.ok().body(bookService.findBookList(page, limit, sortBy, direction, publisherName, authorName, bookTitle));
+
+	}
+	
 	//nama yang salah /save-book /create-book
 	@PostMapping("/v1/book")
 	public ResponseEntity<Void> createANewBook(@RequestBody BookCreateRequestDTO dto){
@@ -50,11 +67,11 @@ public class BookResource {
 		return ResponseEntity.created(URI.create("/book")).build();
 	}
 	
-	@GetMapping("/v1/book")
-	public ResponseEntity<List<BookDetailResponseDTO>> findBookList(){
-		return ResponseEntity.ok().body(bookService.findBookListDetail());
-		
-	}
+//	@GetMapping("/v1/book")
+//	public ResponseEntity<List<BookDetailResponseDTO>> findBookList(){
+//		return ResponseEntity.ok().body(bookService.findBookListDetail());
+//		
+//	}
 	
 	//PUT /book
 	@PutMapping("/v1/book/{bookId}")
