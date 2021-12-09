@@ -1,6 +1,9 @@
 package com.subrutin.catalog.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.subrutin.catalog.domain.Category;
 import com.subrutin.catalog.dto.CategoryCreateUpdateRequestDTO;
 import com.subrutin.catalog.dto.CategoryListResponseDTO;
+import com.subrutin.catalog.dto.CategoryQueryDTO;
 import com.subrutin.catalog.dto.ResultPageResponseDTO;
 import com.subrutin.catalog.exception.BadRequestException;
 import com.subrutin.catalog.repository.CategoryRepository;
@@ -72,6 +76,24 @@ public class CategoryServiceImpl implements CategoryService {
 			dto.setDescription(c.getDescription());
 			return dto;
 		}).collect(Collectors.toList());
+	}
+
+	@Override
+	public Map<Long, List<String>> findBookByIdIn(List<Long> idList) {
+		List<CategoryQueryDTO> queryList =  categoryRepository.findCategoryByBookIdIn(idList);
+		Map<Long, List<String>> categoryMaps = new HashMap<>(); 
+		List<String> categorieCodes = null;
+		for(CategoryQueryDTO q : queryList) {
+			if(!categoryMaps.containsKey(q.getBookId())) {
+				categorieCodes = new ArrayList<>();
+			}else {
+				categorieCodes = categoryMaps.get(q.getBookId());
+			}
+			
+			categorieCodes.add(q.getCategoryCode());
+			categoryMaps.put(q.getBookId(), categorieCodes);
+		}
+		return categoryMaps;
 	}
 
 }

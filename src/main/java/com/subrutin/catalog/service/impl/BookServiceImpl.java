@@ -1,6 +1,7 @@
 package com.subrutin.catalog.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -135,12 +136,15 @@ public class BookServiceImpl implements BookService{
 		Pageable pageable = PageRequest.of(pages, limit, sort);
 
 		Page<Book> pageResult = bookRepository.findBookList(bookTitle, publisherName, authorName, pageable);
+		List<Long> idList =  pageResult.stream().map(b->b.getId()).collect(Collectors.toList());
+		Map<Long, List<String>> categoriesMap =  categoryService.findBookByIdIn(idList);
+		
 		List<BookListResponseDTO> dtos =  pageResult.stream().map(b -> {
 			BookListResponseDTO dto = new BookListResponseDTO();
 			dto.setTitle(b.getTitle());
 			dto.setAuthorNames(b.getAuthors().stream().map(a->a.getName()).collect(Collectors.toList()));
 			dto.setPublisherName(b.getPublisher().getName());
-			dto.setCategoryCodes(b.getCategories().stream().map(c->c.getCode()).collect(Collectors.toList()));
+			dto.setCategoryCodes(categoriesMap.get(b.getId()));
 			return dto;
 		}).collect(Collectors.toList());
 		

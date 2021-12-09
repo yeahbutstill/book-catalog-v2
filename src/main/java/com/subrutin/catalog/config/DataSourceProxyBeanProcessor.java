@@ -38,7 +38,7 @@ public class DataSourceProxyBeanProcessor implements BeanPostProcessor{
 
         public ProxyDataSourceInterceptor(final DataSource dataSource) {
             super();
-            this.dataSource = ProxyDataSourceBuilder.create(dataSource).countQuery().logQueryBySlf4j(SLF4JLogLevel.INFO).build();
+            this.dataSource = ProxyDataSourceBuilder.create(dataSource).countQuery().logQueryBySlf4j(SLF4JLogLevel.DEBUG).build();
         }
 
         @Override
