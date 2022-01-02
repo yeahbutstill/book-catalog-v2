@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.subrutin.catalog.service.AuthorService;
 
 import lombok.AllArgsConstructor;
 
+@Validated
 @AllArgsConstructor
 @RestController
 public class AuthorResource {

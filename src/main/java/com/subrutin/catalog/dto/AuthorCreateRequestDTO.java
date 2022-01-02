@@ -3,10 +3,12 @@ package com.subrutin.catalog.dto;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.subrutin.catalog.validator.annotation.ValidAuthorName;
 
 import lombok.Data;
 
@@ -14,11 +16,13 @@ import lombok.Data;
 @Data
 public class AuthorCreateRequestDTO {
 
+	@ValidAuthorName
 	@NotBlank
 	private String authorName;
 	
 	@NotNull
 	private Long birthDate;
 	
+	@NotEmpty
 	private List<AddressCreateRequestDTO> addresses;
 }
