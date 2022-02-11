@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.subrutin.catalog.domain.AppUser;
 import com.subrutin.catalog.service.AppUserService;
 
 import lombok.AllArgsConstructor;
