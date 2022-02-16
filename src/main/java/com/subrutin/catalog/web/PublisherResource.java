@@ -48,8 +48,7 @@ public class PublisherResource {
 		publisherService.updatePublisher(publisherId, dto);
 		return ResponseEntity.ok().build();
 	}
-	
-//	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated()")
 	@LogThisMethod
 	@GetMapping("/v1/publisher")
 	public ResponseEntity<ResultPageResponseDTO<PublisherListResponseDTO>> findPublisherList(
