@@ -1,5 +1,8 @@
 package com.subrutin.catalog.config;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +17,12 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.subrutin.catalog.security.filter.JwtAuthenticationFilter;
 import com.subrutin.catalog.security.filter.UsernamePasswordAuthenticationFilter;
+import com.subrutin.catalog.security.provider.JwtAuthenticationProvider;
 import com.subrutin.catalog.security.provider.UsernamePasswordAuthProvider;
+import com.subrutin.catalog.security.util.SkipPathRequestMatcher;
+import com.subrutin.catalog.security.util.TokenExtractor;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -34,9 +41,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private UsernamePasswordAuthProvider usernamePasswordAuthProvider;
 	
+	@Autowired
+	private JwtAuthenticationProvider jwtAuthenticationProvider;
+	
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private TokenExtractor tokenExtractor;
 	
 	@Bean
 	@Override
@@ -55,8 +68,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //		auth.userDetailsService(appUserService).passwordEncoder(passwordEncoder());
 		auth.authenticationProvider(usernamePasswordAuthProvider);
+		auth.authenticationProvider(jwtAuthenticationProvider);
 	}
 	
+	protected JwtAuthenticationFilter buildJwtAuthFilter(List<String> pathTokSkip, List<String> patternList) {
+		SkipPathRequestMatcher matches = new SkipPathRequestMatcher(pathTokSkip, patternList);
+		JwtAuthenticationFilter filter = new JwtAuthenticationFilter(tokenExtractor, failureHandler, matches);
+		filter.setAuthenticationManager(authenticationManager);
+		return filter;
+		//ant matcher
+	}
 	
 	protected UsernamePasswordAuthenticationFilter buildUsernamePasswordAuthFilter(String loginEntryPoint) {
 		UsernamePasswordAuthenticationFilter filter = new UsernamePasswordAuthenticationFilter(loginEntryPoint, successHandler, failureHandler, objectMapper);
@@ -66,12 +87,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		List<String> permitAllEndpointList = Arrays.asList(
+				"/v1/login"
+				);
+				
+		List<String> authenticatedEndpointList = Arrays.asList(
+				V1_URL,
+				V2_URL
+				
+				);
 		http.authorizeRequests().antMatchers(V1_URL, V2_URL).authenticated()
 		.and()
 		.csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and()
-		.addFilterBefore(buildUsernamePasswordAuthFilter("/v1/login"), org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
+		.addFilterBefore(buildUsernamePasswordAuthFilter("/v1/login"), org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class)
+		.addFilterBefore(buildJwtAuthFilter(permitAllEndpointList, authenticatedEndpointList), org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class)
+		;
 	}
 
 	
