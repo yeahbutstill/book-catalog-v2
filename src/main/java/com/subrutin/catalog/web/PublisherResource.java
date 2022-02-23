@@ -24,11 +24,13 @@ import com.subrutin.catalog.dto.ResultPageResponseDTO;
 import com.subrutin.catalog.exception.BadRequestException;
 import com.subrutin.catalog.service.PublisherService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 
 @Validated
 @AllArgsConstructor
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 public class PublisherResource {
 
 	private final PublisherService publisherService;

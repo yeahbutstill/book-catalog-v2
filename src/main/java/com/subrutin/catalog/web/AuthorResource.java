@@ -19,10 +19,12 @@ import com.subrutin.catalog.dto.AuthorResponseDTO;
 import com.subrutin.catalog.dto.AuthorUpdateRequestDTO;
 import com.subrutin.catalog.service.AuthorService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 public class AuthorResource {
 	
 	private final AuthorService authorService;

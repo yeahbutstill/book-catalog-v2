@@ -14,10 +14,12 @@ import com.subrutin.catalog.dto.CategoryListResponseDTO;
 import com.subrutin.catalog.dto.ResultPageResponseDTO;
 import com.subrutin.catalog.service.CategoryService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 public class CategoryResource {
 
 	private final CategoryService categoryService;

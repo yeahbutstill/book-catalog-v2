@@ -23,12 +23,14 @@ import com.subrutin.catalog.dto.BookUpdateRequestDTO;
 import com.subrutin.catalog.dto.ResultPageResponseDTO;
 import com.subrutin.catalog.service.BookService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @AllArgsConstructor
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 public class BookResource {
 	
 	private final BookService bookService;
