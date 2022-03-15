@@ -5,21 +5,21 @@ import org.springframework.security.authentication.AuthenticationServiceExceptio
 import org.springframework.stereotype.Component;
 
 @Component
-public class JwtHeaderTokenExtractor implements TokenExtractor{
-	
-	private static final String HEADER_PREFIX = "Bearer ";
+public class JwtHeaderTokenExtractor implements TokenExtractor {
 
-	@Override
-	public String extract(String payload) {
-		if(StringUtils.isBlank(payload)) {
-			throw new AuthenticationServiceException("Authorization header cannot be blank");
-		}
-		
-		if(payload.length() < HEADER_PREFIX.length()) {
-			throw new AuthenticationServiceException("invalid authorization header");
-		}
-		
-		return payload.substring(HEADER_PREFIX.length(), payload.length());
-	}
+    private static final String HEADER_PREFIX = "Bearer ";
+
+    @Override
+    public String extract(String payload) {
+        if (StringUtils.isBlank(payload)) {
+            throw new AuthenticationServiceException("Authorization header cannot be blank");
+        }
+
+        if (payload.length() < HEADER_PREFIX.length()) {
+            throw new AuthenticationServiceException("invalid authorization header");
+        }
+
+        return payload.substring(HEADER_PREFIX.length(), payload.length());
+    }
 
 }

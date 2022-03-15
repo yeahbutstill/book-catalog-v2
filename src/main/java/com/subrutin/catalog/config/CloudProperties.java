@@ -6,18 +6,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "cloud")
 public class CloudProperties {
-	
-	private String apiKey;
 
-	public String getApiKey() {
-		return apiKey;
-	}
+    private String apiKey;
 
-	public void setApiKey(String apiKey) {
-		this.apiKey = apiKey;
-	}
-	
-	
-	
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
 
 }

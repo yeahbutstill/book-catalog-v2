@@ -1,13 +1,12 @@
 package com.subrutin.catalog.repository;
 
-import java.util.Optional;
-
+import com.subrutin.catalog.domain.dao.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.subrutin.catalog.domain.dao.AppUser;
+import java.util.Optional;
 
-public interface AppUserRepository extends JpaRepository<AppUser, Long>{
-	
-	public Optional<AppUser> findByUsername(String username);
+public interface AppUserRepository extends JpaRepository<AppUser, Long> {
+
+    public Optional<AppUser> findByUsername(String username);
 
 }

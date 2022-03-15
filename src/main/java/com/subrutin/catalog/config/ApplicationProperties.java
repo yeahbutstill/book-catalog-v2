@@ -6,36 +6,36 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "app")
 public class ApplicationProperties {
-	
-	private String welcomeText;
-	
-	private String timezone;
-	
-	private String currency;
 
-	public String getWelcomeText() {
-		return welcomeText;
-	}
+    private String welcomeText;
 
-	public void setWelcomeText(String welcomeText) {
-		this.welcomeText = welcomeText;
-	}
+    private String timezone;
 
-	public String getTimezone() {
-		return timezone;
-	}
+    private String currency;
 
-	public void setTimezone(String timezone) {
-		this.timezone = timezone;
-	}
+    public String getWelcomeText() {
+        return welcomeText;
+    }
 
-	public String getCurrency() {
-		return currency;
-	}
+    public void setWelcomeText(String welcomeText) {
+        this.welcomeText = welcomeText;
+    }
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
+    public String getTimezone() {
+        return timezone;
+    }
 
-	
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+
 }

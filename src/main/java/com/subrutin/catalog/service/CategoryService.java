@@ -1,24 +1,24 @@
 package com.subrutin.catalog.service;
 
-import java.util.List;
-import java.util.Map;
-
 import com.subrutin.catalog.domain.dao.Category;
 import com.subrutin.catalog.domain.dto.CategoryCreateUpdateRequestDTO;
 import com.subrutin.catalog.domain.dto.CategoryListResponseDTO;
 import com.subrutin.catalog.domain.dto.ResultPageResponseDTO;
 
+import java.util.List;
+import java.util.Map;
+
 public interface CategoryService {
-	
-	public void createAndUpdateCategory(CategoryCreateUpdateRequestDTO dto);
-	
-	public ResultPageResponseDTO<CategoryListResponseDTO> findCategoryList(Integer pages, 
-			Integer limit, String sortBy, String direction, String categoryName);
-	
-	public List<Category> findCategories(List<String> categoryCodeList);
-	
-	public List<CategoryListResponseDTO> constructDTO(List<Category> categories);
-	
-	public Map<Long, List<String>> findCategoriesMap(List<Long> bookIdList);
-	
+
+    void createAndUpdateCategory(CategoryCreateUpdateRequestDTO dto);
+
+    ResultPageResponseDTO<CategoryListResponseDTO> findCategoryList(Integer pages,
+                                                                    Integer limit, String sortBy, String direction, String categoryName);
+
+    List<Category> findCategories(List<String> categoryCodeList);
+
+    List<CategoryListResponseDTO> constructDTO(List<Category> categories);
+
+    Map<Long, List<String>> findCategoriesMap(List<Long> bookIdList);
+
 }

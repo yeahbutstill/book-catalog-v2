@@ -1,26 +1,22 @@
 package com.subrutin.catalog.service;
 
-import java.util.List;
+import com.subrutin.catalog.domain.dto.*;
 
-import com.subrutin.catalog.domain.dto.BookCreateRequestDTO;
-import com.subrutin.catalog.domain.dto.BookDetailResponseDTO;
-import com.subrutin.catalog.domain.dto.BookListResponseDTO;
-import com.subrutin.catalog.domain.dto.BookUpdateRequestDTO;
-import com.subrutin.catalog.domain.dto.ResultPageResponseDTO;
+import java.util.List;
 
 public interface BookService {
 
-	public BookDetailResponseDTO findBookDetailById(String bookId);
+    BookDetailResponseDTO findBookDetailById(String bookId);
 
-	public List<BookDetailResponseDTO> findBookListDetail();
+    List<BookDetailResponseDTO> findBookListDetail();
 
-	public void createNewBook(BookCreateRequestDTO dto);
+    void createNewBook(BookCreateRequestDTO dto);
 
-	public void updateBook(Long bookId, BookUpdateRequestDTO dto);
+    void updateBook(Long bookId, BookUpdateRequestDTO dto);
 
-	public void deleteBook(Long bookId);
+    void deleteBook(Long bookId);
 
-	public ResultPageResponseDTO<BookListResponseDTO> findBookList(Integer page, Integer limit, String sortBy,
-			String direction, String publisherName, String bookTitle, String authorName);
+    ResultPageResponseDTO<BookListResponseDTO> findBookList(Integer page, Integer limit, String sortBy,
+                                                            String direction, String publisherName, String bookTitle, String authorName);
 
 }
