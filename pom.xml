@@ -9,7 +9,7 @@
         <version>2.5.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.subrutin</groupId>
+    <groupId>com.yeahbutstill</groupId>
     <artifactId>book-catalog-v2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>book-catalog-v2</name>
@@ -111,6 +111,12 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>0.11.2</version>
             <scope>runtime</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.6</version>
         </dependency>
 
     </dependencies>
