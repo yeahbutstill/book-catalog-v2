@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.subrutin.catalog.dto.AuthorCreateRequestDTO;
-import com.subrutin.catalog.dto.AuthorResponseDTO;
-import com.subrutin.catalog.dto.AuthorUpdateRequestDTO;
+import com.subrutin.catalog.domain.dto.AuthorCreateRequestDTO;
+import com.subrutin.catalog.domain.dto.AuthorResponseDTO;
+import com.subrutin.catalog.domain.dto.AuthorUpdateRequestDTO;
 import com.subrutin.catalog.service.AuthorService;
 
 import lombok.AllArgsConstructor;

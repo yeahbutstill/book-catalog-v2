@@ -10,12 +10,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.subrutin.catalog.domain.Publisher;
-import com.subrutin.catalog.dto.PublisherCreateRequestDTO;
-import com.subrutin.catalog.dto.PublisherListResponseDTO;
-import com.subrutin.catalog.dto.PublisherResponseDTO;
-import com.subrutin.catalog.dto.PublisherUpdateRequestDTO;
-import com.subrutin.catalog.dto.ResultPageResponseDTO;
+import com.subrutin.catalog.domain.dao.Publisher;
+import com.subrutin.catalog.domain.dto.PublisherCreateRequestDTO;
+import com.subrutin.catalog.domain.dto.PublisherListResponseDTO;
+import com.subrutin.catalog.domain.dto.PublisherResponseDTO;
+import com.subrutin.catalog.domain.dto.PublisherUpdateRequestDTO;
+import com.subrutin.catalog.domain.dto.ResultPageResponseDTO;
 import com.subrutin.catalog.exception.BadRequestException;
 import com.subrutin.catalog.repository.PublisherRepository;
 import com.subrutin.catalog.service.PublisherService;

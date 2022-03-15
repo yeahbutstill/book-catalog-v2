@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.subrutin.catalog.dto.BookCreateRequestDTO;
-import com.subrutin.catalog.dto.BookDetailResponseDTO;
+import com.subrutin.catalog.domain.dto.BookCreateRequestDTO;
+import com.subrutin.catalog.domain.dto.BookDetailResponseDTO;
 import com.subrutin.catalog.service.BookService;
 
 import lombok.AllArgsConstructor;

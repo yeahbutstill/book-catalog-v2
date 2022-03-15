@@ -3,10 +3,10 @@ package com.subrutin.catalog.service;
 import java.util.List;
 import java.util.Map;
 
-import com.subrutin.catalog.domain.Author;
-import com.subrutin.catalog.dto.AuthorCreateRequestDTO;
-import com.subrutin.catalog.dto.AuthorResponseDTO;
-import com.subrutin.catalog.dto.AuthorUpdateRequestDTO;
+import com.subrutin.catalog.domain.dao.Author;
+import com.subrutin.catalog.domain.dto.AuthorCreateRequestDTO;
+import com.subrutin.catalog.domain.dto.AuthorResponseDTO;
+import com.subrutin.catalog.domain.dto.AuthorUpdateRequestDTO;
 
 public interface AuthorService {
 	

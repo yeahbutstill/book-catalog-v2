@@ -1,28 +1,31 @@
 package com.subrutin.catalog.security.model;
 
-import java.security.Key;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 
-public class RawAccessJWTToken implements Token {
+import java.io.Serializable;
+import java.security.Key;
 
-	private String token;
+public class RawAccessJWTToken implements Token, Serializable {
 
-	public RawAccessJWTToken(String token) {
-		super();
-		this.token = token;
-	}
+    private static final long serialVersionUID = -2792655556685663365L;
 
-	
-	public Jws<Claims> parseClaims(Key signingKey){
-		return Jwts.parserBuilder().setSigningKey(signingKey).build().parseClaimsJws(this.token);
-	}
-	
-	@Override
-	public String getToken() {
-		return this.token;
-	}
+    private final String token;
+
+    public RawAccessJWTToken(String token) {
+        super();
+        this.token = token;
+    }
+
+
+    public Jws<Claims> parseClaims(Key signingKey) {
+        return Jwts.parserBuilder().setSigningKey(signingKey).build().parseClaimsJws(this.token);
+    }
+
+    @Override
+    public String getToken() {
+        return this.token;
+    }
 
 }

@@ -13,11 +13,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.subrutin.catalog.domain.Category;
-import com.subrutin.catalog.dto.CategoryCreateUpdateRequestDTO;
-import com.subrutin.catalog.dto.CategoryListResponseDTO;
-import com.subrutin.catalog.dto.CategoryQueryDTO;
-import com.subrutin.catalog.dto.ResultPageResponseDTO;
+import com.subrutin.catalog.domain.dao.Category;
+import com.subrutin.catalog.domain.dto.CategoryCreateUpdateRequestDTO;
+import com.subrutin.catalog.domain.dto.CategoryListResponseDTO;
+import com.subrutin.catalog.domain.dto.CategoryQueryDTO;
+import com.subrutin.catalog.domain.dto.ResultPageResponseDTO;
 import com.subrutin.catalog.exception.BadRequestException;
 import com.subrutin.catalog.repository.CategoryRepository;
 import com.subrutin.catalog.service.CategoryService;

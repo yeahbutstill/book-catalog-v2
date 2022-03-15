@@ -9,12 +9,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.subrutin.catalog.domain.Address;
-import com.subrutin.catalog.domain.Author;
-import com.subrutin.catalog.dto.AuthorCreateRequestDTO;
-import com.subrutin.catalog.dto.AuthorQueryDTO;
-import com.subrutin.catalog.dto.AuthorResponseDTO;
-import com.subrutin.catalog.dto.AuthorUpdateRequestDTO;
+import com.subrutin.catalog.domain.dao.Address;
+import com.subrutin.catalog.domain.dao.Author;
+import com.subrutin.catalog.domain.dto.AuthorCreateRequestDTO;
+import com.subrutin.catalog.domain.dto.AuthorQueryDTO;
+import com.subrutin.catalog.domain.dto.AuthorResponseDTO;
+import com.subrutin.catalog.domain.dto.AuthorUpdateRequestDTO;
 import com.subrutin.catalog.exception.BadRequestException;
 import com.subrutin.catalog.exception.ResourceNotFoundException;
 import com.subrutin.catalog.repository.AuthorRepository;

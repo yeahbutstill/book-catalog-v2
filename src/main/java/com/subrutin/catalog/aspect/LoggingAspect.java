@@ -8,11 +8,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
-
-import com.subrutin.catalog.dto.BookDetailResponseDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +24,7 @@ public class LoggingAspect {
 	@Pointcut("within(com.subrutin.catalog.web.*)")
 	private void withinPointcutExample() {}
 	
-	@Pointcut("args(com.subrutin.catalog.dto.PublisherCreateRequestDTO)")
+	@Pointcut("args(com.subrutin.catalog.domain.dto.PublisherCreateRequestDTO)")
 	private void argsPointcutExample() {}
 	
 	@Pointcut("@args(com.subrutin.catalog.annotation.LogThisArg)")

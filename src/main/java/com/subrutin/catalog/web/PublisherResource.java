@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.subrutin.catalog.annotation.LogThisMethod;
-import com.subrutin.catalog.dto.PublisherCreateRequestDTO;
-import com.subrutin.catalog.dto.PublisherListResponseDTO;
-import com.subrutin.catalog.dto.PublisherUpdateRequestDTO;
-import com.subrutin.catalog.dto.ResultPageResponseDTO;
+import com.subrutin.catalog.domain.dto.PublisherCreateRequestDTO;
+import com.subrutin.catalog.domain.dto.PublisherListResponseDTO;
+import com.subrutin.catalog.domain.dto.PublisherUpdateRequestDTO;
+import com.subrutin.catalog.domain.dto.ResultPageResponseDTO;
 import com.subrutin.catalog.exception.BadRequestException;
 import com.subrutin.catalog.service.PublisherService;
 

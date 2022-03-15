@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Sort;
 
-import com.subrutin.catalog.dto.ResultPageResponseDTO;
+import com.subrutin.catalog.domain.dto.ResultPageResponseDTO;
 
 public class PaginationUtil {
 	

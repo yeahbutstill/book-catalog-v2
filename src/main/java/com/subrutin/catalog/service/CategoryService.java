@@ -3,10 +3,10 @@ package com.subrutin.catalog.service;
 import java.util.List;
 import java.util.Map;
 
-import com.subrutin.catalog.domain.Category;
-import com.subrutin.catalog.dto.CategoryCreateUpdateRequestDTO;
-import com.subrutin.catalog.dto.CategoryListResponseDTO;
-import com.subrutin.catalog.dto.ResultPageResponseDTO;
+import com.subrutin.catalog.domain.dao.Category;
+import com.subrutin.catalog.domain.dto.CategoryCreateUpdateRequestDTO;
+import com.subrutin.catalog.domain.dto.CategoryListResponseDTO;
+import com.subrutin.catalog.domain.dto.ResultPageResponseDTO;
 
 public interface CategoryService {
 	
